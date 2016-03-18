@@ -7,41 +7,41 @@ from os.path import dirname,join
 #这里的Wox基类做了一些工作，简化了与Wox通信的步骤。
 class Main(Wox):
 
-  icon = join(dirname(__file__), 'images', 'mooncake.png')
+  icon = join(dirname(__file__), "images", "mooncake.png")
 
   #必须有一个query方法，用户执行查询的时候会自动调用query方法
   def query(self,key):
     if  key == None or len(key) < 3:
         return [
             {
-                "Title":'input number',
+                "Title":"input number",
                 "IcoPath":self.icon,
             }
         ]
-    if ' ' not in key:
+    if " " not in key:
         return [
             {
-                "Title":'input number',
+                "Title":"input number",
                 "IcoPath":self.icon,
             }
         ]
     nums = []
-    scales = ['dec','bin','oct','hex']
-    inps = key.split(' ')
+    scales = ["dec","bin","oct","hex"]
+    inps = key.split(" ")
     scale = inps[0]
     num = inps[1]
-    if scale == 'b':
+    if scale == "b":
         num10 = int(num,2)
-    elif scale == 'd':
-        num10 = num
-    elif scale == 'o':
+    elif scale == "d":
+        num10 = int(num)
+    elif scale == "o":
         num10 = int(num,8)
-    elif scale == 'h':
+    elif scale == "h":
         num10 = int(num,16)
     else:
         return [
             {
-                "Title":'input number',
+                "Title":"input number",
                 "IcoPath":self.icon,
             }
         ]
